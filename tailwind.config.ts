@@ -52,6 +52,22 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Game specific colors
+				win: {
+					DEFAULT: 'hsl(var(--win))',
+					foreground: 'hsl(var(--win-foreground))',
+					light: 'hsl(var(--win-light))'
+				},
+				lose: {
+					DEFAULT: 'hsl(var(--lose))',
+					foreground: 'hsl(var(--lose-foreground))',
+					light: 'hsl(var(--lose-light))'
+				},
+				draw: {
+					DEFAULT: 'hsl(var(--draw))',
+					foreground: 'hsl(var(--draw-foreground))',
+					light: 'hsl(var(--draw-light))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
