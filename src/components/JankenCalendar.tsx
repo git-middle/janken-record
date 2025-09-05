@@ -6,6 +6,7 @@ import { JankenRecord } from "@/types/janken"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { getRecordsByDate, getResultSymbol, formatDate } from "@/lib/janken"
+import { startOfWeek, endOfWeek } from "date-fns"
 import { cn } from "@/lib/utils"
 
 interface JankenCalendarProps {
@@ -18,7 +19,11 @@ export function JankenCalendar({ records, onDateClick }: JankenCalendarProps) {
 
   const monthStart = startOfMonth(currentDate)
   const monthEnd = endOfMonth(currentDate)
-  const calendarDays = eachDayOfInterval({ start: monthStart, end: monthEnd })
+
+  const calendarStart = startOfWeek(monthStart, { locale: ja })
+  const calendarEnd = endOfWeek(monthEnd, { locale: ja })
+
+  const calendarDays = eachDayOfInterval({ start: calendarStart, end: calendarEnd })
 
   const navigateMonth = (direction: 'prev' | 'next') => {
     setCurrentDate(prev => {

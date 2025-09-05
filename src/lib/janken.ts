@@ -39,7 +39,7 @@ export function getResultSymbol(result: Result): string {
 }
 
 export function formatDate(date: Date): string {
-  return date.toISOString().split('T')[0]
+  return date..split('T')[0]
 }
 
 export function parseDate(dateString: string): Date {
