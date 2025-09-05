@@ -21,6 +21,7 @@ export function JankenForm({ onRecordSaved }: JankenFormProps) {
   const [opponentHand, setOpponentHand] = useState<Hand | null>(null)
   const [myHand, setMyHand] = useState<Hand | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [importance, setImportance] = useState<"低" | "中" | "高" | "">("")
 
   const canSubmit = opponentHand && myHand && !isSubmitting
 
@@ -34,7 +35,8 @@ export function JankenForm({ onRecordSaved }: JankenFormProps) {
         date: formatDate(date),
         opponentHand,
         myHand,
-        result
+        result,
+        importance: importance as "低" | "中" | "高"
       })
 
       onRecordSaved(record)
@@ -106,6 +108,21 @@ export function JankenForm({ onRecordSaved }: JankenFormProps) {
             onHandSelect={setMyHand}
           />
         </div>
+        
+        {/* Importance Selector */}
+        <div className="space-y-2">
+        <label className="text-sm font-medium text-foreground">このじゃんけんの重要度</label>
+        <select
+          value={importance}
+          onChange={(e) => setImportance(e.target.value as "低" | "中" | "高")}
+          className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-ring"
+          required>
+        <option value="">選択してください</option>
+        <option value="低">低</option>
+        <option value="中">中</option>
+        <option value="高">高</option>
+        </select>
+        </div>
 
         {/* Submit Button */}
         <div className="space-y-2">
@@ -121,7 +138,7 @@ export function JankenForm({ onRecordSaved }: JankenFormProps) {
           
           {!opponentHand || !myHand ? (
             <p className="text-xs text-muted-foreground text-center">
-              相手の手と自分の手を選択してください
+              じゃんけんの対戦履歴を記録してください
             </p>
           ) : null}
         </div>

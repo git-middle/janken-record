@@ -1,5 +1,6 @@
 export type Hand = "グー" | "チョキ" | "パー"
 export type Result = "勝ち" | "負け" | "あいこ"
+export type Importance = "低" | "中" | "高"
 
 export interface JankenRecord {
   id: string
@@ -7,6 +8,7 @@ export interface JankenRecord {
   opponentHand: Hand
   myHand: Hand
   result: Result
+  importance: Importance
   createdAt: Date
 }
 

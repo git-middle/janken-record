@@ -58,7 +58,13 @@ export function RecordsList({ records }: RecordsListProps) {
                     {getHandEmoji(record.myHand)}
                   </span>
                 </div>
-              </div>
+
+                {record.importance && (
+                  <span className="text-sm text-muted-foreground">
+                  {record.importance}
+                  </span>
+                )}
+                </div>
               
               <div className="flex items-center gap-2">
                 <span 
