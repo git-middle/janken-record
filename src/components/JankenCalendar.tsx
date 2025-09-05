@@ -131,7 +131,7 @@ export function JankenCalendar({ records, onDateClick }: JankenCalendarProps) {
             <span>負け</span>
           </div>
           <div className="flex items-center gap-1">
-            <span className="text-draw font-bold">・</span>
+            <span className="text-draw font-bold">△</span>
             <span>あいこ</span>
           </div>
         </div>

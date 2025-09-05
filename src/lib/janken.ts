@@ -34,7 +34,7 @@ export function getResultSymbol(result: Result): string {
     case "負け":
       return "×"
     case "あいこ":
-      return "・"
+      return "△"
   }
 }
 
