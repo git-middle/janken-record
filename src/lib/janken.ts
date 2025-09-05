@@ -1,4 +1,6 @@
 import { Hand, Result, JankenRecord } from "@/types/janken"
+import { format } from "date-fns"
+import { parse } from "date-fns"
 
 export function judgeJanken(myHand: Hand, opponentHand: Hand): Result {
   if (myHand === opponentHand) {
@@ -39,11 +41,12 @@ export function getResultSymbol(result: Result): string {
 }
 
 export function formatDate(date: Date): string {
-  return date..split('T')[0]
+  // デバイスのローカルタイムで YYYY-MM-DD を返す
+  return format(date, "yyyy-MM-dd")
 }
 
 export function parseDate(dateString: string): Date {
-  return new Date(dateString + 'T00:00:00')
+  return parse(dateString, "yyyy-MM-dd", new Date())
 }
 
 // LocalStorage utilities
