@@ -6,9 +6,9 @@ export function judgeJanken(myHand: Hand, opponentHand: Hand): Result {
   }
   
   if (
-    (myHand === "ぐー" && opponentHand === "ちょき") ||
-    (myHand === "ちょき" && opponentHand === "ぱー") ||
-    (myHand === "ぱー" && opponentHand === "ぐー")
+    (myHand === "グー" && opponentHand === "チョキ") ||
+    (myHand === "チョキ" && opponentHand === "パー") ||
+    (myHand === "パー" && opponentHand === "グー")
   ) {
     return "勝ち"
   }
@@ -18,11 +18,11 @@ export function judgeJanken(myHand: Hand, opponentHand: Hand): Result {
 
 export function getHandEmoji(hand: Hand): string {
   switch (hand) {
-    case "ぐー":
+    case "グー":
       return "✊"
-    case "ちょき":
+    case "チョキ":
       return "✌️"
-    case "ぱー":
+    case "パー":
       return "✋"
   }
 }

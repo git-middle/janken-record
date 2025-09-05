@@ -8,7 +8,7 @@ interface HandSelectorProps {
   onHandSelect: (hand: Hand) => void
 }
 
-const hands: Hand[] = ["ぐー", "ちょき", "ぱー"]
+const hands: Hand[] = ["グー", "チョキ", "パー"]
 
 export function HandSelector({ title, selectedHand, onHandSelect }: HandSelectorProps) {
   return (

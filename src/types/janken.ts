@@ -1,4 +1,4 @@
-export type Hand = "ぐー" | "ちょき" | "ぱー"
+export type Hand = "グー" | "チョキ" | "パー"
 export type Result = "勝ち" | "負け" | "あいこ"
 
 export interface JankenRecord {
