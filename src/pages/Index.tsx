@@ -52,8 +52,14 @@ const Index = () => {
                 </TabsList>
                 
                 <TabsContent value="history" className="mt-6">
-                  <RecordsList records={sortedRecords.slice(0, 20)} />
+                <RecordsList
+                records={sortedRecords.slice(0, 10)}   // 直近10件に制限
+                onRecordDeleted={(id) =>
+                setRecords(prev => prev.filter(r => r.id !== id)) // 削除を親で反映
+                }
+                />
                 </TabsContent>
+
                 
                 <TabsContent value="calendar" className="mt-6">
                   <JankenCalendar records={records} />

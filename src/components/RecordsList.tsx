@@ -3,13 +3,26 @@ import { ja } from "date-fns/locale"
 import { JankenRecord } from "@/types/janken"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { getHandEmoji, getResultSymbol } from "@/lib/janken"
+import { getHandEmoji, getResultSymbol, deleteRecord} from "@/lib/janken"
+import { Trash2 } from "lucide-react"
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogCancel,
+  AlertDialogAction,
+} from "@/components/ui/alert-dialog"
 
 interface RecordsListProps {
   records: JankenRecord[]
+  onRecordDeleted?: (id: string) => void
 }
 
-export function RecordsList({ records }: RecordsListProps) {
+export function RecordsList({ records, onRecordDeleted }: RecordsListProps) {
   if (records.length === 0) {
     return (
       <Card>
@@ -19,6 +32,9 @@ export function RecordsList({ records }: RecordsListProps) {
       </Card>
     )
   }
+
+  // 直近10件に制限
+  const latestRecords = records.slice(0, 10) 
 
   const getResultVariant = (result: string) => {
     switch (result) {
@@ -33,6 +49,11 @@ export function RecordsList({ records }: RecordsListProps) {
     }
   }
 
+   const handleDelete = (id: string) => {
+    deleteRecord(id)           // localStorageから削除
+    onRecordDeleted?.(id)      // 親に通知してstate更新
+  }
+
   return (
     <Card>
       <CardHeader>
@@ -40,7 +61,7 @@ export function RecordsList({ records }: RecordsListProps) {
       </CardHeader>
       <CardContent>
         <div className="space-y-3">
-          {records.map((record) => (
+          {latestRecords.map((record) => (
             <div
               key={record.id}
               className="flex items-center justify-between p-3 rounded-lg border bg-card hover:bg-accent/50 transition-colors"
@@ -87,6 +108,33 @@ export function RecordsList({ records }: RecordsListProps) {
                   {record.result}
                 </Badge>
               </div>
+               
+              {/* 削除ボタン → AlertDialog に変更 */}
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <button className="p-1 text-muted-foreground hover:text-destructive">
+                    <Trash2 className="h-4 w-4" />
+                  </button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>削除の確認</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      この記録を本当に削除しますか？ この操作は取り消せません。
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>キャンセル</AlertDialogCancel>
+                    <AlertDialogAction
+                      className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                      onClick={() => handleDelete(record.id)}
+                    >
+                      削除する
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+
             </div>
           ))}
         </div>
