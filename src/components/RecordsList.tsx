@@ -106,18 +106,16 @@ export function RecordsList({ records, onRecordDeleted }: RecordsListProps) {
                   </span>
                 </div>
 
-                {record.importance && (
-                  <span className="text-sm text-muted-foreground">
-                  {record.importance}
-                  </span>
-                )}
+              <span className="text-sm text-muted-foreground">
+              {record.importance ? record.importance : "　"}
+              </span>
 
-              <span className="ml-2 text-sm text-muted-foreground">
+              <span className="ml-2 text-sm text-muted-foreground whitespace-nowrap">
               {opponent ? opponent.name : "（相手なし）"}
               </span>
                </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-end gap-2 w-full">
                 <span 
                   className={`text-lg font-bold ${
                     record.result === "勝ち" ? "text-win" :
@@ -139,10 +137,10 @@ export function RecordsList({ records, onRecordDeleted }: RecordsListProps) {
                 </Badge>
               </div>
                
-              {/* 削除ボタン → AlertDialog に変更 */}
+              {/* 削除ボタン */}
               <AlertDialog>
                 <AlertDialogTrigger asChild>
-                  <button className="p-1 text-muted-foreground hover:text-destructive">
+                  <button className="p-1 text-muted-foreground hover:text-destructive  ml-4">
                     <Trash2 className="h-4 w-4" />
                   </button>
                 </AlertDialogTrigger>
