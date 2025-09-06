@@ -10,6 +10,7 @@ export interface JankenRecord {
   result: Result
   importance: Importance
   createdAt: Date
+  opponentId?: string  
 }
 
 export interface JankenStats {

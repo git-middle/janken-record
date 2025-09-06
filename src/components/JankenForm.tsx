@@ -11,6 +11,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { judgeJanken, saveRecord, formatDate } from "@/lib/janken"
 import { cn } from "@/lib/utils"
 import { toast } from "@/hooks/use-toast"
+import OpponentSelect from "@/components/ui/OpponentSelect"; 
+import type { OpponentID } from "@/types/opponent";
 
 interface JankenFormProps {
   onRecordSaved: (record: JankenRecord) => void
@@ -21,6 +23,7 @@ export function JankenForm({ onRecordSaved }: JankenFormProps) {
   const [opponentHand, setOpponentHand] = useState<Hand | null>(null)
   const [myHand, setMyHand] = useState<Hand | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [opponentId, setOpponentId] = useState<OpponentID | null>(null)
   const [importance, setImportance] = useState<"低" | "中" | "高" | "">("")
 
   const canSubmit = opponentHand && myHand && !isSubmitting
@@ -36,7 +39,8 @@ export function JankenForm({ onRecordSaved }: JankenFormProps) {
         opponentHand,
         myHand,
         result,
-        importance: importance as "低" | "中" | "高"
+        importance: importance as "低" | "中" | "高",
+        opponentId: opponentId !== null ? opponentId : undefined,
       })
 
       onRecordSaved(record)
@@ -108,6 +112,15 @@ export function JankenForm({ onRecordSaved }: JankenFormProps) {
             onHandSelect={setMyHand}
           />
         </div>
+
+        {/* 対戦相手を選択する */}
+        <div className="space-y-2">
+        <OpponentSelect
+        value={opponentId}
+        onChange={setOpponentId}
+        />
+        </div>
+
         
         {/* Importance Selector */}
         <div className="space-y-2">
