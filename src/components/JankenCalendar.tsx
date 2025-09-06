@@ -101,22 +101,19 @@ export function JankenCalendar({ records, onDateClick }: JankenCalendarProps) {
                   {format(date, "d")}
                 </span>
                 {hasRecords && (
-                  <div className="flex gap-[1px] mt-1">
-                    {dayRecords.slice(0, 4).map((record, index) => (
+                  <div className="flex gap-[2px] mt-1 items-center">
                       <span
-                        key={index}
                         className={cn(
                           "text-[10px] leading-none",
-                          record.result === "勝ち" && "text-win",
-                          record.result === "負け" && "text-lose",
-                          record.result === "あいこ" && "text-draw"
+                          dayRecords[0].result === "勝ち" && "text-win",
+                          dayRecords[0].result === "負け" && "text-lose",
+                          dayRecords[0].result === "あいこ" && "text-draw"
                         )}
                       >
-                        {getResultSymbol(record.result)}
+                        {getResultSymbol(dayRecords[0].result)}
                       </span>
-                    ))}
-                    {dayRecords.length > 4 && (
-                      <span className="text-[8px] text-muted-foreground">...</span>
+                    {dayRecords.length > 1 && (
+                      <span className="text-[8px] text-muted-foreground">ほか</span>
                     )}
                   </div>
                 )}
