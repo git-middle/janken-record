@@ -31,7 +31,7 @@ const Index = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">✊✌️✋</h1>
+          <h1 className="text-3xl font-bold text-foreground mb-2"></h1>
           <h2 className="text-2xl font-bold text-foreground mb-1">じゃんけん記録帳</h2>
           <p className="text-muted-foreground">じゃんけんの結果を記録して、勝敗を振り返ろう！</p>
         </div>

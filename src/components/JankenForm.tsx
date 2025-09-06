@@ -67,7 +67,7 @@ export function JankenForm({ onRecordSaved }: JankenFormProps) {
   return (
     <Card className="w-full max-w-lg mx-auto">
       <CardHeader className="text-center">
-        <CardTitle className="text-xl">じゃんけん記録</CardTitle>
+        <CardTitle className="text-xl"></CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Date Picker */}
