@@ -112,15 +112,6 @@ export function JankenForm({ onRecordSaved }: JankenFormProps) {
             onHandSelect={setMyHand}
           />
         </div>
-
-        {/* 対戦相手を選択する */}
-        <div className="space-y-2">
-        <OpponentSelect
-        value={opponentId}
-        onChange={setOpponentId}
-        />
-        </div>
-
         
         {/* Importance Selector */}
         <div className="space-y-2">
@@ -135,6 +126,14 @@ export function JankenForm({ onRecordSaved }: JankenFormProps) {
         <option value="中">中</option>
         <option value="高">高</option>
         </select>
+        </div>
+
+         {/* 対戦相手を選択する */}
+        <div className="space-y-2">
+        <OpponentSelect
+        value={opponentId}
+        onChange={setOpponentId}
+        />
         </div>
 
         {/* Submit Button */}

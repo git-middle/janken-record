@@ -16,6 +16,8 @@ import {
   AlertDialogCancel,
   AlertDialogAction,
 } from "@/components/ui/alert-dialog"
+import { useOpponents } from "@/hooks/useOpponents";
+import { useState } from "react";
 
 interface RecordsListProps {
   records: JankenRecord[]
@@ -23,6 +25,9 @@ interface RecordsListProps {
 }
 
 export function RecordsList({ records, onRecordDeleted }: RecordsListProps) {
+  const { opponents,byId } = useOpponents();
+   const [selectedOpponentId, setSelectedOpponentId] = useState<string | "">("");
+  
   if (records.length === 0) {
     return (
       <Card>
@@ -33,8 +38,13 @@ export function RecordsList({ records, onRecordDeleted }: RecordsListProps) {
     )
   }
 
+ // 対戦相手によるフィルタリング → 直近10件
+  const filteredRecords = selectedOpponentId
+    ? records.filter((r) => r.opponentId === selectedOpponentId)
+    : records;
+
   // 直近10件に制限
-  const latestRecords = records.slice(0, 10) 
+  const latestRecords = filteredRecords.slice(0, 10) 
 
   const getResultVariant = (result: string) => {
     switch (result) {
@@ -58,10 +68,26 @@ export function RecordsList({ records, onRecordDeleted }: RecordsListProps) {
     <Card>
       <CardHeader>
         <CardTitle className="text-lg">履歴一覧</CardTitle>
+        <select
+        value={selectedOpponentId}
+        onChange={(e) => setSelectedOpponentId(e.target.value)}
+        className="mt-2 w-full rounded-md border px-2 py-1 text-sm">
+        
+        <option value="">すべて表示</option>
+        {opponents.map((o) => (
+        <option key={o.id} value={o.id}>
+        {o.name}
+        </option>
+      ))}
+
+  </select>
       </CardHeader>
       <CardContent>
         <div className="space-y-3">
-          {latestRecords.map((record) => (
+          {latestRecords.map((record) => {
+            const opponent = record.opponentId ? byId.get(record.opponentId) : null; // 👈 ここで名前取得
+
+            return (
             <div
               key={record.id}
               className="flex items-center justify-between p-3 rounded-lg border bg-card hover:bg-accent/50 transition-colors"
@@ -85,8 +111,12 @@ export function RecordsList({ records, onRecordDeleted }: RecordsListProps) {
                   {record.importance}
                   </span>
                 )}
-                </div>
-              
+
+              <span className="ml-2 text-sm text-muted-foreground">
+              {opponent ? opponent.name : "（相手なし）"}
+              </span>
+               </div>
+
               <div className="flex items-center gap-2">
                 <span 
                   className={`text-lg font-bold ${
@@ -136,7 +166,8 @@ export function RecordsList({ records, onRecordDeleted }: RecordsListProps) {
               </AlertDialog>
 
             </div>
-          ))}
+            );
+          })} 
         </div>
       </CardContent>
     </Card>
