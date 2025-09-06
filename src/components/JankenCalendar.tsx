@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils"
 
 interface JankenCalendarProps {
   records: JankenRecord[]
-  onDateClick?: (date: string) => void
+  onDateClick?: (date: Date) => void
 }
 
 export function JankenCalendar({ records, onDateClick }: JankenCalendarProps) {
@@ -87,7 +87,7 @@ export function JankenCalendar({ records, onDateClick }: JankenCalendarProps) {
             return (
               <button
                 key={date.toString()}
-                onClick={() => onDateClick?.(formatDate(date))}
+                onClick={() => onDateClick?.(date)}
                 className={cn(
                   "h-12 flex flex-col items-center justify-center text-xs border rounded-md transition-colors hover:bg-accent",
                   isSameMonth(date, currentDate) 

@@ -7,9 +7,18 @@ import { StatsCard } from "@/components/StatsCard"
 import { OpponentsCard } from "@/components/OpponentsCard"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { getRecords } from "@/lib/janken"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+import { format } from "date-fns"
+import { ja } from "date-fns/locale"
 
 const Index = () => {
   const [records, setRecords] = useState<JankenRecord[]>([])
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
 
   useEffect(() => {
     setRecords(getRecords())
@@ -64,7 +73,7 @@ const Index = () => {
 
                 
                 <TabsContent value="calendar" className="mt-6">
-                  <JankenCalendar records={records} />
+                  <JankenCalendar records={records} onDateClick={setSelectedDate}/>
                 </TabsContent>
                 
                 <TabsContent value="stats" className="mt-6">
@@ -76,6 +85,26 @@ const Index = () => {
                 </TabsContent>
 
               </Tabs>
+              
+              {/* 日付クリックで開くモーダル */}
+              <Dialog open={!!selectedDate} onOpenChange={() => setSelectedDate(null)}>
+              <DialogContent>
+              <DialogHeader>
+              <DialogTitle>
+              {selectedDate && format(selectedDate, "yyyy年MM月dd日", { locale: ja })} の成績
+              </DialogTitle>
+              </DialogHeader>
+              <RecordsList
+              records={records.filter((r) => {
+              if (!selectedDate) return false
+              const recordDate = new Date(r.date)
+              if (isNaN(recordDate.getTime())) return false // 無効日付を除外
+              return format(recordDate, "yyyy-MM-dd") === format(selectedDate, "yyyy-MM-dd")})}
+
+              onRecordDeleted={(id) =>
+              setRecords((prev) => prev.filter((r) => r.id !== id))}/>
+              </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>
