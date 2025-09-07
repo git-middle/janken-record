@@ -41,8 +41,8 @@ const Index = () => {
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-foreground mb-2"></h1>
-          <h2 className="text-2xl font-bold text-foreground mb-1">じゃんけん記録帳</h2>
-          <p className="text-muted-foreground">じゃんけんの結果を記録して、勝敗を振り返ろう！</p>
+          <h2 className="text-4xl font-bold text-foreground mb-1">じゃんけん記録帳</h2>
+          <p className="text-muted-foreground">じゃんけんの結果を記録して、勝敗を振り返ることができます。</p>
         </div>
 
         <div className="max-w-6xl mx-auto">
@@ -106,8 +106,8 @@ const Index = () => {
               </DialogContent>
               </Dialog>
 
-              <div className="max-w-5xl mx-auto">
-               <p className="text-xs text-muted-foreground text-center">じゃんけん記録帳</p>
+              <div className="max-w-5xl mx-auto mt-6">
+              <p className="text-muted-foreground text-center">じゃんけん記録帳 - 分析して勝率を上げよう!</p>
               </div>
 
             </div>
