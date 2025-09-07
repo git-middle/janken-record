@@ -59,7 +59,7 @@ const Index = () => {
                   <TabsTrigger value="history">履歴</TabsTrigger>
                   <TabsTrigger value="calendar">カレンダー</TabsTrigger>
                   <TabsTrigger value="stats">統計</TabsTrigger>
-                  <TabsTrigger value="opponents">対戦相手の管理</TabsTrigger>
+                  <TabsTrigger value="opponents">対戦相手管理</TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="history" className="mt-6">
