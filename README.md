@@ -1,73 +1,113 @@
-# Welcome to your Lovable project
+--English version
 
-## Project info
+🌸 Janken Record Book
 
-**URL**: https://lovable.dev/projects/be4ee590-c262-4dd0-8e24-e028b23562b8
+Keep track of your rock-paper-scissors games and analyze the results.
 
-## How can I edit this code?
+【Features】
+📌 Recording
 
-There are several ways of editing your application.
+Date, your hand, and your opponent’s hand are required.
 
-**Use Lovable**
+Importance of the match and opponent’s name are optional.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/be4ee590-c262-4dd0-8e24-e028b23562b8) and start prompting.
+Opponents can be selected from a dropdown list, and new ones can be added if not registered.
 
-Changes made via Lovable will be committed automatically to this repo.
+📌 History
 
-**Use your preferred IDE**
+Filter past records by opponent name.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Records can be deleted (once deleted, they cannot be restored).
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Shows the last 10 records.
 
-Follow these steps:
+When filtered by opponent, shows the last 10 records for that opponent.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+📌 Calendar
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Days with records are marked on the calendar.
 
-# Step 3: Install the necessary dependencies.
-npm i
+If “+ others” appears after the mark, it means multiple matches were recorded that day.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Tap a date to view detailed records.
 
-**Edit a file directly in GitHub**
+📌 Statistics
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Displays your overall performance so far.
 
-**Use GitHub Codespaces**
+Can be filtered by date and opponent.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+📌 Opponent Management
 
-## What technologies are used for this project?
+Edit registered opponent names.
 
-This project is built with:
+Delete registered opponents.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+If deleted, past history will display them as “(No opponent)”.
 
-## How can I deploy this project?
+If you’re interested, try it out here!
 
-Simply open [Lovable](https://lovable.dev/projects/be4ee590-c262-4dd0-8e24-e028b23562b8) and click on Share -> Publish.
+👉 App link:
+https://janken-record.vercel.app/
 
-## Can I connect a custom domain to my Lovable project?
+--Japanese version
 
-Yes, you can!
+🌸じゃんけん記録帳
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+じゃんけんを記録して分析できます。
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+最初はサザエさんとのじゃんけんを記録するために作り始めたのですが、サザエさんに限らず、一生涯のすべてのじゃんけんを記録するアプリにしてみました。
+
+どんなことでも勝ちにこだわる気概のある方に届きますように。
+
+【アプリの特徴】
+ーーーーーーーーーーーーーーーーーーーーー
+📌記録
+ーーーーーーーーーーーーーーーーーーーーー
+→日付と相手の手、自分の手は必須入力。
+じゃんけんの重要度と対戦相手は任意入力。
+
+→対戦相手はプルダウンで選択できますが、
+未登録の相手は新規登録できます。
+
+ーーーーーーーーーーーーーーーーーーーーー
+📌 履歴
+ーーーーーーーーーーーーーーーーーーーーー
+→対戦相手の名前で履歴を絞り込むことができます。
+
+→履歴は削除できますが、削除したら復元はできません。
+
+→履歴は過去10件分の記録が表示されます。
+対戦相手で絞った時は絞った内容で過去10件分が表示されます。
+
+ーーーーーーーーーーーーーーーーーーーーー
+📌 カレンダー
+ーーーーーーーーーーーーーーーーーーーーー
+→じゃんけんの記録がある日付にはマークが表示されます。
+
+→マークの後に「ほか」と入っている場合は、
+１日に複数の記録がある時です。
+
+→日付を押すと詳しい記録が見られます。
+
+ーーーーーーーーーーーーーーーーーーーーー
+📌 統計
+ーーーーーーーーーーーーーーーーーーーーー
+→ これまでのじゃんけんの成績が表示されます。
+
+→日付と対戦相手で絞り込むことができます。
+
+ーーーーーーーーーーーーーーーーーーーーー
+📌 対戦相手管理
+ーーーーーーーーーーーーーーーーーーーーー
+→登録した対戦相手の名前を修正できます。
+
+→登録した対戦相手の名前を削除することもできます。
+削除した場合、履歴では（相手なし）と表示されます。 
+
+ーーーーーーーーーーーーーーーーーーーーー
+気になった方はぜひ下記リンクよりアクセス！
+
+👉 アプリはこちら：
+https://janken-record.vercel.app/
+ーーーーーーーーーーーーーーーーーーーーー
