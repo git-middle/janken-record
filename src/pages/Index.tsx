@@ -105,6 +105,11 @@ const Index = () => {
               setRecords((prev) => prev.filter((r) => r.id !== id))}/>
               </DialogContent>
               </Dialog>
+
+              <div className="max-w-5xl mx-auto">
+               <p className="text-xs text-muted-foreground text-center">じゃんけん記録帳</p>
+              </div>
+
             </div>
           </div>
         </div>

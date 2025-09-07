@@ -1,6 +1,26 @@
 import { Hand, Result, JankenRecord } from "@/types/janken"
-import { format } from "date-fns"
-import { parse } from "date-fns"
+import { format, parse, isSameWeek} from "date-fns"
+
+export function filterByPeriod(
+  records: JankenRecord[],
+  period: "all" | "day" | "week" | "month" | "year"
+) {
+  const now = new Date()
+  if (period === "all") return records
+
+  return records.filter(r => {
+    const d = new Date(r.date)
+    if (period === "day") return d.toDateString() === now.toDateString()
+    if (period === "week") return isSameWeek(d, now, { weekStartsOn: 1 })
+    if (period === "month") return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear()
+    if (period === "year") return d.getFullYear() === now.getFullYear()
+  })
+}
+
+export function filterByOpponent(records: JankenRecord[], opponentId: string | "all") {
+  if (opponentId === "all") return records
+  return records.filter(r => r.opponentId === opponentId)
+}
 
 export function judgeJanken(myHand: Hand, opponentHand: Hand): Result {
   if (myHand === opponentHand) {

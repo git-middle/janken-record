@@ -128,7 +128,7 @@ export function JankenForm({ onRecordSaved }: JankenFormProps) {
         </select>
         </div>
 
-         {/* 対戦相手を選択する */}
+         {/* 対戦相手を選択する*/}
         <div className="space-y-2">
         <OpponentSelect
         value={opponentId}
