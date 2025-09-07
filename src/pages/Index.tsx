@@ -42,7 +42,7 @@ const Index = () => {
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-foreground mb-2"></h1>
           <h2 className="text-4xl font-bold text-foreground mb-1">じゃんけん記録帳</h2>
-          <p className="text-muted-foreground">じゃんけんの結果を記録して、勝敗を振り返ることができます。</p>
+          <p className="text-muted-foreground">じゃんけんの結果を記録して<br></br>勝敗を振り返ることができます。</p>
         </div>
 
         <div className="max-w-6xl mx-auto">
