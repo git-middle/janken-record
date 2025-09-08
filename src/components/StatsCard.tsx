@@ -16,6 +16,13 @@ export function StatsCard({ records }: StatsCardProps) {
   const filteredByPeriod = filterByPeriod(records, period)
   const filteredRecords = filterByOpponent(filteredByPeriod, opponent)
 
+  //コンソールを足してる。後で消す！！！
+   console.log("[StatsCard] period=", period,
+    "all=", records.length,
+    "byPeriod=", filteredByPeriod.length,
+    "byPeriod+opponent=", filteredRecords.length
+  )
+
   const totalGames = filteredRecords.length
   const wins = filteredRecords.filter(r => r.result === "勝ち").length
   const losses = filteredRecords.filter(r => r.result === "負け").length

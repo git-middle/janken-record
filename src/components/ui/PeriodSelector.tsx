@@ -1,4 +1,3 @@
-import { useState } from "react"
 import {
   Select,
   SelectContent,
@@ -7,17 +6,21 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-export function PeriodSelector() {
-const [period, setPeriod] = useState<"all" | "day" | "week" | "month" | "year">("all")
+type Period = "all" | "day" | "week" | "month" | "year"
 
-return(
-<Select 
-defaultValue="all"
-onValueChange={(value: "all" | "day" | "week" | "month" | "year") => setPeriod(value)}>
-  <SelectTrigger className="w-[180px]">
-     <SelectValue />
-  </SelectTrigger>
-  <SelectContent>
+export function PeriodSelector({
+  period,
+  setPeriod,
+}: {
+  period: Period
+  setPeriod: (p: Period) => void
+}) {
+return (
+    <Select value={period} onValueChange={(v) => setPeriod(v as Period)}>
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="すべての期間" />
+      </SelectTrigger>
+      <SelectContent>
     <SelectItem value="all">すべての期間</SelectItem>
     <SelectItem value="day">日</SelectItem>
     <SelectItem value="week">週</SelectItem>
