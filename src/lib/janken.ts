@@ -1,5 +1,5 @@
 import { Hand, Result, JankenRecord } from "@/types/janken"
-import { format, parse, isSameWeek} from "date-fns"
+import { format, parse, isSameWeek, isSameDay} from "date-fns"
 
 export function filterByPeriod(
   records: JankenRecord[],
@@ -9,8 +9,8 @@ export function filterByPeriod(
   if (period === "all") return records
 
   return records.filter(r => {
-    const d = new Date(r.date)
-    if (period === "day") return d.toDateString() === now.toDateString()
+    const d = parseDate(r.date) 
+    if (period === "day") return isSameDay(d, now)
     if (period === "week") return isSameWeek(d, now, { weekStartsOn: 1 })
     if (period === "month") return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear()
     if (period === "year") return d.getFullYear() === now.getFullYear()
